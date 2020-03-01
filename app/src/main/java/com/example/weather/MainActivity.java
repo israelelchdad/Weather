@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.weather.Moudel.AllCountry;
 import com.example.weather.Moudel.Country;
 
 import java.util.ArrayList;
@@ -16,16 +15,18 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Country>myListCountry;
+    private String myRegion = "europe";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initListCountries();
+
+        initListCountries(myRegion);
     }
 
-    private void initListCountries() {
-        Call<Country[]> call = RestClient.mycounryisService.serchContryByRegion("europe");
+    private void initListCountries(String region) {
+        Call<Country[]> call = RestClient.mycounryisService.serchContryByRegion(region);
         call.enqueue(new Callback<Country[]>() {
             @Override
             public void onResponse(Call<Country[]> call, Response<Country[]> response) {

@@ -1,6 +1,5 @@
 package com.example.weather;
 
-import com.example.weather.Moudel.AllCountry;
 import com.example.weather.Moudel.Country;
 
 import retrofit2.Call;
